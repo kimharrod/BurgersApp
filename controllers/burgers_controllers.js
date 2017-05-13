@@ -46,7 +46,7 @@ router.post("/", function(req, res) {
 	if (burgList.indexOf(burg.burger_name) === -1) {
 		// create burger
 		Burger.create({
-			burger_name: burg.burger.name,
+			burger_name: burg.burger_name,
 			devoured: false
 		});
 	} // end burger create
