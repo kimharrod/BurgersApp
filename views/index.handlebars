@@ -22,7 +22,7 @@
 			  {{#if this.not_eaten}}
 				  <ul>
 				  	<img src="/img/cheezeyb.png" height="100"><br>{{this.not_eaten}}
-				  	<form action="/devoured/" method="POST">
+				  	<form action="/devoured/?_method=PUT" method="POST">
 				  		<input type="hidden" name="not_eaten" value="{{this.not_eaten}}">
 				  		<button type="submit">Devour it!</button>
 			  		</form>

@@ -57,7 +57,7 @@ router.post("/", function(req, res) {
 
 
 // Route to "eat" a burger
-router.post("/devoured", function(req, res) {
+router.put("/devoured", function(req, res) {
 
 	var burg = req.body;
 
