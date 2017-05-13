@@ -1,0 +1,48 @@
+<div class="container-fluid">
+  <h1>Order a Burger!</h1>
+  	<div>
+	  <form action="/" method="POST">
+	  Add a burger to the menu: <input type="text" name="burger_name">
+	  <button type="submit">Submit</button>
+	  </form>
+  	</div>
+
+	<div class="row">
+		<div class="col-sm-6">
+		<h2>Burgers on the Menu</h2>
+
+			<ul>
+			  {{#each menu}}
+			  {{#if this.not_eaten}}
+				  <li>
+				  	<img src="/img/cheezeyb.png" height="100"><br>{{this.not_eaten}}
+				  	<form action="/devoured/" method="POST">
+				  		<input type="hidden" name="not_eaten" value="{{this.not_eaten}}">
+				  		<button type="submit">Devour it!</button>
+			  		</form>
+				  </li>
+			  {{/if}}
+			  {{/each}}
+			</ul>
+		</div>
+
+		<div class="col-sm-6">
+		<h2>Devoured Burgers</h2>
+
+			<ul>
+			  {{#each menu}}
+			  {{#if this.eaten}}
+			      <li>
+			        <img src="/img/cheezeyb.png" height="100"><br>{{this.eaten}}
+			      </li>
+		      {{/if}}
+		      {{/each}}
+		    </ul>
+
+	    </div>
+	</div> 
+</div>
+
+
+
+
