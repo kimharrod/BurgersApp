@@ -1,6 +1,7 @@
 // Dependencies
 var express = require("express");
 var bodyParser = require("body-parser");
+var methodOverride = require("method-override");
 var exphbs = require("express-handlebars");
 
 
@@ -11,6 +12,8 @@ var PORT = process.env.PORT || 8088;
 // Sets up Handlebars
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
+
+app.use(methodOverride("_method"));
 
 // Sets up the Express app to handle data parsing
 app.use(bodyParser.json());
