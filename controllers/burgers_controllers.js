@@ -3,6 +3,8 @@ var express = require("express");
 // Set up the router middleware
 var router = express.Router();
 
+var burgList = [];
+
 //Import the model (burger.js) to use its database functions
 var Burger = require("../models/burger.js");
 
@@ -19,6 +21,7 @@ router.get("/", function(req, res) {
 		};
 
 		  for (var i = 0; i < result.length; i++) {
+		  	burgList.push(result[i].burger_name);
 		  	if (result[i].devoured === false) {
 		  	  data.menu.push({'not_eaten': result[i].burger_name});
 			} else {
@@ -32,5 +35,25 @@ router.get("/", function(req, res) {
 
 	}); // end promise
 }); // end get route
+
+
+// Route to add a burger to the menu
+router.post("/", function(req, res) {
+
+	// Take the request
+	var burg = req.body;
+
+	if (burgList.indexOf(burg.burger_name) === -1) {
+		// create burger
+		Burger.create({
+			burger_name: burg.burger.name,
+			devoured: false
+		});
+	} // end burger create
+
+	res.redirect("/");
+	
+}); // end post a burger route
+
 
 
