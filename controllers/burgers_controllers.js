@@ -73,5 +73,8 @@ router.post("/devoured", function(req, res) {
 	
 }); // end "devoured"
 
+// Export routes for server.js to use
+module.exports = router;
+
 
 
