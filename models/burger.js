@@ -15,8 +15,23 @@ var Burger = sequelize.define("burgers", {
   }
 });
 
-// Syncs with database
-Burger.sync();
+// Syncs with database and seeds database on initial sync
+Burger.sync().then(function() {
+
+  Burger.findAll({})
+      .then(function(result) {
+        // if not already seeded
+        if (result.length < 3) {
+          var burgArray = ['Big Mac', 'Whopper Jr', 'Baconator'];
+        for (var i = 0; i < burgArray.length; i++) {
+          Burger.create({
+            burger_name: burgArray[i],
+            devoured: false
+          });
+        } // end for
+        } // end if not already seeded
+      }); // end inner promise
+}); // end Burger.sync promise
 
 // Makes the Burger Model available for other files and creates a table
 module.exports = Burger;
