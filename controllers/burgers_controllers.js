@@ -52,8 +52,26 @@ router.post("/", function(req, res) {
 	} // end burger create
 
 	res.redirect("/");
-	
+
 }); // end post a burger route
+
+
+// Route to "eat" a burger
+router.post("/devoured", function(req, res) {
+
+	var burg = req.body;
+
+	Burger.update({
+		devoured: true
+	  }, {
+		where: {
+		  burger_name: burg.not_eaten
+		}
+	  }).then(function(data) {
+  	res.redirect("/");
+	});
+	
+}); // end "devoured"
 
 
 
