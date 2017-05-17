@@ -20,13 +20,31 @@ router.get("/", function(req, res) {
 			menu: []
 		};
 
+		// initialize variables for burger photo count
+		burgList = [];
+		var n = 1;
+
 		  for (var i = 0; i < result.length; i++) {
+
 		  	burgList.push(result[i].burger_name);
+
 		  	if (result[i].devoured === false) {
-		  	  data.menu.push({'not_eaten': result[i].burger_name});
+
+		  	  data.menu.push({'not_eaten': result[i].burger_name, 'imgName': 'burger' + n});
+
 			} else {
-			  data.menu.push({'eaten': result[i].burger_name});
+
+			  data.menu.push({'eaten': result[i].burger_name, 'imgName': 'burger' + n});
+
 		    } // end if/else
+
+		    // cycle through burger images from 1 to 10 for display
+		    if (n < 10) {
+		    	n = n + 1;
+		    } else {
+		    	n = 1;
+
+		    }
 
 		  } // end for loop
 		  console.log("\n" + data.menu + "\n");

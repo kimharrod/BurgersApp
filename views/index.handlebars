@@ -21,7 +21,7 @@
 			  {{#each menu}}
 			  {{#if this.not_eaten}}
 				  <ul>
-				  	<img src="/img/cheezeyb.png" height="100"><br>{{this.not_eaten}}
+				  	<img src="/img/{{this.imgName}}.jpeg" height="100"><br>{{this.not_eaten}}
 				  	<form action="/devoured/?_method=PUT" method="POST">
 				  		<input type="hidden" name="not_eaten" value="{{this.not_eaten}}">
 				  		<button type="submit">Devour it!</button>
@@ -39,7 +39,7 @@
 			  {{#each menu}}
 			  {{#if this.eaten}}
 			      <ul>
-			        <img src="/img/cheezeyb.png" height="100"><br>{{this.eaten}}
+			        <img src="/img/{{this.imgName}}.jpeg" height="100"><br>{{this.eaten}}
 			      </ul>
 		      {{/if}}
 		      {{/each}}
